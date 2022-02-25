@@ -1,6 +1,4 @@
-import 'dart:collection';
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 import 'package:pets_app/Menu.dart';
 import 'package:pets_app/api.dart';
@@ -15,7 +13,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Pets & Adote',
+      title: 'Pets && Adote',
       home: BuildListView(),
     );
   }
