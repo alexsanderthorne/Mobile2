@@ -6,6 +6,6 @@ const baseUrl =
 class API {
   static Future getPets() async {
     var url = baseUrl + "/ajax-pets.json";
-    return await http.get(url);
+    return await http.get(url as Uri);
   }
 }
