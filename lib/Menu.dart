@@ -1,10 +1,6 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:pets_app/main.dart';
+import 'package:my_pets/main.dart';
 
-void main() {
-  runApp(MenuApp());
-}
 
 class MenuApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -45,6 +41,9 @@ class _MenuState extends State<Menu> {
               Navigator.pop(context);
             },
             child: Text("Voltar ao início"),
+            elevation: 5.0,
+            color: Colors.blue,
+            shape: const StadiumBorder(),
           ),
         ),
       ),
@@ -96,6 +95,8 @@ class _MenuState extends State<Menu> {
                       MaterialPageRoute(
                           builder: (BuildContext context) => Menu()));
                 },
-                child: Text("Voltar ao início"))));
+                child: Text("Voltar ao início"),
+                elevation: 5.0,
+                color: Colors.blue)));
   }
 }

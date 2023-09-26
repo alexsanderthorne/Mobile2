@@ -1,15 +1,14 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
-import 'package:pets_app/Menu.dart';
-import 'package:pets_app/api.dart';
-import 'package:pets_app/pet.dart';
+import 'package:my_pets/Menu.dart';
+import 'package:my_pets/pet.dart';
+import 'api.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -25,7 +24,7 @@ class BuildListView extends StatefulWidget {
 }
 
 class _BuildListViewState extends State<BuildListView> {
-  var pets = new List<Pet>();
+  var pets = <Pet>[];
   int imgIndex = 0;
 
   void _prevImg() {
@@ -41,12 +40,29 @@ class _BuildListViewState extends State<BuildListView> {
   }
 
   _getPets() {
-    API.getPets().then((response) {
-      setState(() {
-        Iterable list = json.decode(response.body);
-        pets = list.map((model) => Pet.fromJson(model)).toList();
-      });
-    });
+    var pets_json = {
+      "pets": [
+        {
+          "name": "Fluffy",
+          "species": "Cat",
+          "age": 3,
+          "color": "Gray"
+        },
+        {
+          "name": "Buddy",
+          "species": "Dog",
+          "age": 5,
+          "color": "Golden Retriever"
+        },
+        {
+          "name": "Spike",
+          "species": "Hedgehog",
+          "age": 2,
+          "color": "Brown"
+        }
+      ]
+    };
+
   }
 
   _BuildListViewState() {
@@ -96,7 +112,10 @@ class _BuildListViewState extends State<BuildListView> {
                                 MaterialPageRoute(
                                     builder: (BuildContext context) => Menu()));
                           },
-                          child: Text("Ir para Menu de Opcções")))),
+                          child: Text("Ir para Menu de Opcções"),
+                          elevation: 5.0,
+                          color: Colors.green,
+                          shape: const StadiumBorder()))),
             ],
           ),
         ),
@@ -114,15 +133,26 @@ class _BuildListViewState extends State<BuildListView> {
   }
 
   listaPets() {
+    if (pets.isEmpty) {
+      // Lide com o caso em que a lista de pets está vazia.
+      return Center(
+        child: Text("Nenhum animal de estimação disponível."),
+      );
+    }
+
+    // Certifique-se de que imgIndex esteja dentro dos limites da lista pets.
+    if (imgIndex < 0) {
+      imgIndex = 0;
+    } else if (imgIndex >= pets.length) {
+      imgIndex = pets.length - 1;
+    }
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Padding(
           padding: const EdgeInsets.all(8.0),
           child: Text(
-            pets[imgIndex].name +
-                " | " +
-                pets[imgIndex].foods["likes"].toString(),
+            pets[imgIndex].name + " | " + pets[imgIndex].foods[1].toString(),
             style: TextStyle(fontSize: 20.0),
           ),
         ),
@@ -147,6 +177,7 @@ class _BuildListViewState extends State<BuildListView> {
               onPressed: _prevImg,
               elevation: 5.0,
               color: Colors.green,
+              shape: const StadiumBorder(),
             ),
             SizedBox(width: 10.0),
             RaisedButton(
@@ -154,6 +185,7 @@ class _BuildListViewState extends State<BuildListView> {
               onPressed: _nextImg,
               elevation: 5.0,
               color: Colors.blue,
+              shape: const StadiumBorder(),
             )
           ],
         )
@@ -161,3 +193,10 @@ class _BuildListViewState extends State<BuildListView> {
     );
   }
 }
+
+RaisedButton(
+    {required Text child,
+    required void Function() onPressed,
+    required double elevation,
+    required MaterialColor color,
+    required StadiumBorder shape}) {}

@@ -79,9 +79,9 @@ test_api
 file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.6.0/
 file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/test_api-0.6.0/lib/
 typed_data
-2.12
-file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.3.0/
-file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.3.0/lib/
+2.17
+file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.3.2/
+file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/typed_data-1.3.2/lib/
 vector_math
 2.14
 file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/vector_math-2.1.4/
@@ -90,10 +90,6 @@ web
 3.1
 file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/web-0.1.4-beta/
 file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/web-0.1.4-beta/lib/
-pets_app
-2.12
-file:///C:/Users/Alexsander%20Araujo/Documents/Alexsander/Mobile2/
-file:///C:/Users/Alexsander%20Araujo/Documents/Alexsander/Mobile2/lib/
 sky_engine
 3.0
 file:///C:/Users/Alexsander%20Araujo/Documents/Alexsander/flutter/bin/cache/pkg/sky_engine/
@@ -106,4 +102,8 @@ flutter_test
 3.0
 file:///C:/Users/Alexsander%20Araujo/Documents/Alexsander/flutter/packages/flutter_test/
 file:///C:/Users/Alexsander%20Araujo/Documents/Alexsander/flutter/packages/flutter_test/lib/
+my_pets
+2.12
+file:///C:/Users/Alexsander%20Araujo/Documents/Alexsander/my_pets/
+file:///C:/Users/Alexsander%20Araujo/Documents/Alexsander/my_pets/lib/
 2

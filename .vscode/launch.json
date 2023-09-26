@@ -1,19 +1,22 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Mobile.1",
+            "name": "Mobile2",
             "request": "launch",
             "type": "dart"
         },
         {
-            "name": "Mobile.1 (profile mode)",
+            "name": "Mobile2 (profile mode)",
             "request": "launch",
             "type": "dart",
             "flutterMode": "profile"
+        },
+        {
+            "name": "Flutter",
+            "program": "lib/main.dart",
+            "request": "launch",
+            "type": "dart"
         }
     ]
 }
