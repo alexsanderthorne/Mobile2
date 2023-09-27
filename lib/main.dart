@@ -1,8 +1,7 @@
-import 'dart:convert';
+import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:my_pets/Menu.dart';
 import 'package:my_pets/pet.dart';
-import 'api.dart';
 
 void main() {
   runApp(MyApp());
@@ -103,19 +102,17 @@ class _BuildListViewState extends State<BuildListView> {
                 leading: Icon(Icons.flag),
                 title: Text("Orientais"),
               ),
-              Container(
-                  child: Center(
-                      child: RaisedButton(
-                          onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (BuildContext context) => Menu()));
-                          },
-                          child: Text("Ir para Menu de Opcções"),
-                          elevation: 5.0,
-                          color: Colors.green,
-                          shape: const StadiumBorder()))),
+              // Adicionar navegação
+                  ElevatedButton(
+                    onPressed: () {
+                      Navigator.of(context).push(
+                        MaterialPageRoute(
+                          builder: (context) => Menu(),
+                        ),
+                      );
+                    },
+                    child: Text('Ir para Menu de Opções'),
+                  ),
             ],
           ),
         ),
@@ -156,18 +153,20 @@ class _BuildListViewState extends State<BuildListView> {
             style: TextStyle(fontSize: 20.0),
           ),
         ),
-        Center(
-          child: Stack(children: <Widget>[
+        Stack(
+          children: <Widget>[
             Container(
               decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(25.0),
-                  image: DecorationImage(
-                      image: NetworkImage(pets[imgIndex].picture),
-                      fit: BoxFit.cover)),
+                borderRadius: BorderRadius.circular(25.0),
+                image: DecorationImage(
+                  image: FileImage(File('assets/images/LawanyOliveira.png')),
+                  fit: BoxFit.cover,
+                ),
+              ),
               height: 400.0,
               width: 300.0,
             )
-          ]),
+          ],
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
