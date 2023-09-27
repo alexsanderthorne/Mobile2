@@ -1,7 +1,4 @@
-import 'dart:js';
-
 import 'package:flutter/material.dart';
-import 'package:my_pets/main.dart';
 
 class MenuApp extends StatelessWidget {
   @override
@@ -17,7 +14,7 @@ class Menu extends StatelessWidget {
   static const _menuTitles = [
     'Buscar Cães por raça',
     'Buscar Gatos por Raça',
-    'Buscar sucicatu azul',
+    'Buscar suricatu azul',
     'Baleias',
     'Consultar seu animal',
     'Voltar ao início',
@@ -34,52 +31,27 @@ class Menu extends StatelessWidget {
   }
 
   Widget _buildContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 16),
-        ..._buildListItems(),
-        const Spacer(),
-        _buildGetStartedButton(),
-      ],
-    );
-  }
-
-  List<Widget> _buildListItems() {
-    final listItems = <Widget>[];
-    for (var i = 0; i < _menuTitles.length; ++i) {
-      listItems.add(
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 26.0, vertical: 14),
-          child: Text(
-            _menuTitles[i],
-            textAlign: TextAlign.left,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
-            ),
-          ),
-        ),
-      );
-    }
-    return listItems;
-  }
-
-  Widget _buildGetStartedButton() {
-    return SizedBox(
-      width: double.infinity,
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: RaisedButton(
-          shape: const StadiumBorder(),
-          onPressed: () {
-            Navigator.pop(context as BuildContext);
-          },
-          child: Text("Voltar ao início"),
+    return ListView.builder(
+      itemCount: _menuTitles.length,
+      itemBuilder: (context, index) {
+        return Card(
           elevation: 5.0,
-          color: Colors.blue,
-        ),
-      ),
+          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: ListTile(
+            title: Text(
+              _menuTitles[index],
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w500,
+              ),
+            ),
+            onTap: () {
+              // Implemente a ação desejada quando um card for pressionado.
+              // Você pode usar Navigator para navegar para uma página específica.
+            },
+          ),
+        );
+      },
     );
   }
 }
