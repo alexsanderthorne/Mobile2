@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:my_pets/Menu.dart';
 import 'package:my_pets/pet.dart';
@@ -24,178 +23,102 @@ class BuildListView extends StatefulWidget {
 
 class _BuildListViewState extends State<BuildListView> {
   var pets = <Pet>[];
-  int imgIndex = 0;
+  bool isLoading = true; // Flag para controlar o carregamento
 
-  void _prevImg() {
-    setState(() {
-      imgIndex = imgIndex > 0 ? imgIndex - 1 : 0;
+  @override
+  void initState() {
+    super.initState();
+    // Simule o carregamento de dados (substitua por sua lógica real)
+    Future.delayed(Duration(seconds: 2), () {
+      // Quando os dados forem carregados, altere o estado para não estar mais em carregamento
+      setState(() {
+        isLoading = false;
+        // Aqui você pode carregar os dados reais dos pets, se desejar
+      });
     });
   }
 
-  void _nextImg() {
-    setState(() {
-      imgIndex = imgIndex < pets.length - 1 ? imgIndex + 1 : 0;
-    });
-  }
-
-  _getPets() {
-    var pets_json = {
-      "pets": [
-        {
-          "name": "Fluffy",
-          "species": "Cat",
-          "age": 3,
-          "color": "Gray"
-        },
-        {
-          "name": "Buddy",
-          "species": "Dog",
-          "age": 5,
-          "color": "Golden Retriever"
-        },
-        {
-          "name": "Spike",
-          "species": "Hedgehog",
-          "age": 2,
-          "color": "Brown"
-        }
-      ]
-    };
-
-  }
-
-  _BuildListViewState() {
-    _getPets();
-  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text("Lista de Pets"),
-        ),
-        drawer: Drawer(
-          child: ListView(
-            children: <Widget>[
-              UserAccountsDrawerHeader(
-                accountName: Text("Zacal Blend"),
-                accountEmail: Text("zacalblend@gmail.com"),
-                currentAccountPicture: Image.network(
-                    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf-fbBUEbzyPziAIOnlRPsu691z6bnGvUga0ngUtVu0mNCu0eZjfDVFX_JPzrPrequw0k&usqp=CAU"),
-              ),
-              ListTile(
-                trailing: Icon(Icons.picture_as_pdf_sharp),
-                leading: Icon(Icons.home),
-                title: Text("Pequeno porte"),
-              ),
-              ListTile(
-                trailing: Icon(Icons.add_business_rounded),
-                leading: Icon(Icons.flag),
-                title: Text("Médio porte"),
-              ),
-              ListTile(
-                trailing: Icon(Icons.add_business_rounded),
-                leading: Icon(Icons.flag),
-                title: Text("Grande porte"),
-              ),
-              ListTile(
-                trailing: Icon(Icons.add_business_rounded),
-                leading: Icon(Icons.flag),
-                title: Text("Orientais"),
-              ),
-              // Adicionar navegação
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.of(context).push(
-                        MaterialPageRoute(
-                          builder: (context) => Menu(),
-                        ),
-                      );
-                    },
-                    child: Text('Ir para Menu de Opções'),
-                  ),
-            ],
-          ),
-        ),
-        body: listaPets());
-  }
-
-  listPetsName() {
-    return ListView.builder(
-        itemCount: pets.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(pets[index].name),
-          );
-        });
-  }
-
-  listaPets() {
-    if (pets.isEmpty) {
-      // Lide com o caso em que a lista de pets está vazia.
-      return Center(
-        child: Text("Nenhum animal de estimação disponível."),
-      );
-    }
-
-    // Certifique-se de que imgIndex esteja dentro dos limites da lista pets.
-    if (imgIndex < 0) {
-      imgIndex = 0;
-    } else if (imgIndex >= pets.length) {
-      imgIndex = pets.length - 1;
-    }
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: <Widget>[
-        Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Text(
-            pets[imgIndex].name + " | " + pets[imgIndex].foods[1].toString(),
-            style: TextStyle(fontSize: 20.0),
-          ),
-        ),
-        Stack(
+      appBar: AppBar(
+        title: Text("Lista de Pets"),
+      ),
+      drawer: Drawer(
+        child: ListView(
           children: <Widget>[
-            Container(
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(25.0),
-                image: DecorationImage(
-                  image: FileImage(File('assets/images/LawanyOliveira.png')),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              height: 400.0,
-              width: 300.0,
-            )
-          ],
-        ),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            RaisedButton(
-              child: Text('Prev'),
-              onPressed: _prevImg,
-              elevation: 5.0,
-              color: Colors.green,
-              shape: const StadiumBorder(),
+            UserAccountsDrawerHeader(
+              accountName: Text("Alexsander Araujo"),
+              accountEmail: Text("ala@gmail.com"),
+              currentAccountPicture: Image.network(
+                  "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf-fbBUEbzyPziAIOnlRPsu691z6bnGvUga0ngUtVu0mNCu0eZjfDVFX_JPzrPrequw0k&usqp=CAU"),
             ),
-            SizedBox(width: 10.0),
-            RaisedButton(
-              child: Text('Next'),
-              onPressed: _nextImg,
-              elevation: 5.0,
-              color: Colors.blue,
-              shape: const StadiumBorder(),
-            )
+            ListTile(
+              trailing: Icon(Icons.picture_as_pdf_sharp),
+              leading: Icon(Icons.home),
+              title: Text("Pequeno porte"),
+            ),
+            ListTile(
+              trailing: Icon(Icons.add_business_rounded),
+              leading: Icon(Icons.flag),
+              title: Text("Médio porte"),
+            ),
+            ListTile(
+              trailing: Icon(Icons.add_business_rounded),
+              leading: Icon(Icons.flag),
+              title: Text("Grande porte"),
+            ),
+            ListTile(
+              trailing: Icon(Icons.add_business_rounded),
+              leading: Icon(Icons.flag),
+              title: Text("Orientais"),
+            ),
+            // Adicionar navegação
+            ElevatedButton(
+              onPressed: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => Menu(),
+                  ),
+                );
+              },
+              child: Text('Ir para Menu de Opções'),
+            ),
           ],
-        )
-      ],
+        ),
+      ),
+      body: _buildBody(),
+    );
+  }
+
+  Widget _buildBody() {
+    return isLoading
+        ? Center(
+            // Se estiver em carregamento, exibir um CircularProgressIndicator no centro
+            child: CircularProgressIndicator(),
+          )
+        : _buildWelcomeScreen();
+  }
+
+  Widget _buildWelcomeScreen() {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          Image.asset(
+            'assets/images/cat2.1.png', // Caminho para a imagem de boas-vindas
+            width: 300,
+            height: 300,
+            fit: BoxFit.contain,
+          ),
+          SizedBox(height: 20),
+          Text(
+            'Bem-vindo ao Petstop!',
+            style: TextStyle(fontSize: 24),
+          ),
+          // Adicione outros elementos de boas-vindas, se desejar
+        ],
+      ),
     );
   }
 }
-
-RaisedButton(
-    {required Text child,
-    required void Function() onPressed,
-    required double elevation,
-    required MaterialColor color,
-    required StadiumBorder shape}) {}
