@@ -21,4 +21,6 @@ class Pet {
     picture = json['picture'];
     foods = json['foods'];
   }
+
+  
 }

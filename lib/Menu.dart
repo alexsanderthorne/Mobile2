@@ -1,9 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:my_pets/main.dart';
-
 
 class MenuApp extends StatelessWidget {
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -19,9 +16,11 @@ class Menu extends StatefulWidget {
 }
 
 class _MenuState extends State<Menu> {
+  bool isCardPressed = false; // Flag para verificar se um card foi pressionado
+
   static const _menuTitles = [
     'Buscar Cães por raça',
-    'Buscar Gatos por Raça ',
+    'Buscar Gatos por Raça',
     'Buscar sucicatu azul',
     'Baleias',
     'Consultar seu animal',
@@ -32,71 +31,41 @@ class _MenuState extends State<Menu> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Dogs"),
+        title: Text("Menu"),
       ),
-      body: Container(
-        child: Center(
-          child: RaisedButton(
-            onPressed: () {
-              Navigator.pop(context);
-            },
-            child: Text("Voltar ao início"),
-            elevation: 5.0,
-            color: Colors.blue,
-            shape: const StadiumBorder(),
-          ),
-        ),
-      ),
+      body: _buildContent(),
     );
   }
 
   Widget _buildContent() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        const SizedBox(height: 16),
-        ..._buildListItems(),
-        const Spacer(),
-        _buildGetStartedButton(),
-      ],
-    );
-  }
-
-  List<Widget> _buildListItems() {
-    final listItems = <Widget>[];
-    for (var i = 0; i < _menuTitles.length; ++i) {
-      listItems.add(
-        Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 26.0, vertical: 14),
-          child: Text(
-            _menuTitles[i],
-            textAlign: TextAlign.left,
-            style: const TextStyle(
-              fontSize: 24,
-              fontWeight: FontWeight.w500,
+    return ListView.builder(
+      itemCount: _menuTitles.length,
+      itemBuilder: (context, index) {
+        return Card(
+          elevation: 5.0,
+          margin: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+          child: ListTile(
+            title: Text(
+              _menuTitles[index],
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.w500,
+              ),
             ),
+            onTap: () {
+              setState(() {
+                // Quando um card é pressionado, definimos a flag como true
+                isCardPressed = true;
+              });
+              if (_menuTitles[index] == 'Voltar ao início') {
+                Navigator.pop(context);
+              }
+            },
           ),
-        ),
-      );
-    }
-    return listItems;
-  }
-
-  Widget _buildGetStartedButton() {
-    return SizedBox(
-        width: double.infinity,
-        child: Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: RaisedButton(
-                shape: const StadiumBorder(),
-                onPressed: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (BuildContext context) => Menu()));
-                },
-                child: Text("Voltar ao início"),
-                elevation: 5.0,
-                color: Colors.blue)));
+        );
+      },
+    );
+    
   }
 }
+
