@@ -1,2 +1,2 @@
-# Mobile.1
+# mobiledevelopment
 Programa da disciplina de Programação para dispositivos móveis.
