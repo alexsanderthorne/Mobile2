@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_pets/Menu.dart';
+import 'package:my_pets/PetListScreen.dart';
 import 'package:my_pets/pet.dart';
 
 void main() {
@@ -54,24 +55,16 @@ class _BuildListViewState extends State<BuildListView> {
                   "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQf-fbBUEbzyPziAIOnlRPsu691z6bnGvUga0ngUtVu0mNCu0eZjfDVFX_JPzrPrequw0k&usqp=CAU"),
             ),
             ListTile(
-              trailing: Icon(Icons.picture_as_pdf_sharp),
-              leading: Icon(Icons.home),
-              title: Text("Pequeno porte"),
-            ),
-            ListTile(
               trailing: Icon(Icons.add_business_rounded),
               leading: Icon(Icons.flag),
-              title: Text("Médio porte"),
-            ),
-            ListTile(
-              trailing: Icon(Icons.add_business_rounded),
-              leading: Icon(Icons.flag),
-              title: Text("Grande porte"),
-            ),
-            ListTile(
-              trailing: Icon(Icons.add_business_rounded),
-              leading: Icon(Icons.flag),
-              title: Text("Orientais"),
+              title: Text("Visualizar Animais Para Adoção"),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PetListScreen(),
+                  ),
+                );
+              },
             ),
             // Adicionar navegação
             ElevatedButton(
@@ -82,7 +75,7 @@ class _BuildListViewState extends State<BuildListView> {
                   ),
                 );
               },
-              child: Text('Ir para Menu de Opções'),
+              child: Text('Ir para menu de opções'),
             ),
           ],
         ),
@@ -113,7 +106,7 @@ class _BuildListViewState extends State<BuildListView> {
           ),
           SizedBox(height: 20),
           Text(
-            'Bem-vindo ao Petstop!',
+            'Bem-vindo ao Pets Stop!',
             style: TextStyle(fontSize: 24),
           ),
           // Adicione outros elementos de boas-vindas, se desejar
