@@ -3,8 +3,7 @@ class Pet {
   late String species;
   late int price;
   late String picture;
-  late  List<dynamic> foods;
-
+  late List<dynamic> foods;
 
   Pet({
     required this.name,
@@ -21,6 +20,4 @@ class Pet {
     picture = json['picture'];
     foods = json['foods'];
   }
-
-  
 }

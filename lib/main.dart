@@ -66,6 +66,18 @@ class _BuildListViewState extends State<BuildListView> {
                 );
               },
             ),
+             ListTile(
+              trailing: Icon(Icons.add_business_rounded),
+              leading: Icon(Icons.flag),
+              title: Text("Adicionar Animais"),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PetListScreen(),
+                  ),
+                );
+              },
+            ),
             // Adicionar navegação
             ElevatedButton(
               onPressed: () {

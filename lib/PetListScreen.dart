@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:my_pets/Menu.dart';
+import 'package:my_pets/pet.dart';
 
 class PetListScreen extends StatefulWidget {
   @override
@@ -9,16 +11,19 @@ class _PetListScreenState extends State<PetListScreen> {
   String selectedBreed = 'Selecione uma raça';
   String selectedSize = 'Pequeno porte';
   int selectedRadio = 1;
+  bool switchValue = false;
 
   // Mapeamento de raças para caminhos de imagens correspondentes
   Map<String, String> breedImages = {
-    'Selecione uma raça': 'assets/images/placeholder.png',
+    'Selecione uma raça': 'null', // Sem imagem associada
     'Golden Retriever': 'assets/images/cat2.1.png',
     'Labrador Retriever': 'assets/images/cat2.1.png',
     'Bulldog': 'assets/images/cat2.1.png',
     'Poodle': 'assets/images/cat2.1.png',
     // Adicione mais raças e caminhos de imagens, se necessário
   };
+
+  TextEditingController descriptionController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -31,21 +36,54 @@ class _PetListScreenState extends State<PetListScreen> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Row(
+              children: [
+                Text("Ir para Menu: "),
+                Switch(
+                  value: switchValue,
+                  onChanged: (value) {
+                    setState(() {
+                      switchValue = value;
+                      if (switchValue) {
+                        // Se o switch estiver ativado, navegue para a tela Menu.dart
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => Menu(),
+                          ),
+                        );
+                      }
+                    });
+                  },
+                ),
+              ],
+            ),
             _buildDropdown(),
             SizedBox(height: 16),
             _buildRadioButtons(),
             SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: () {
-                _showImageDialog(context, breedImages[selectedBreed] ?? '');
-              },
-              child: Text("Ver Animal Selecionada"),
-            ),
-            // Adicione aqui o conteúdo real da lista de pets
-            Text("Conteúdo da Lista de Pets aqui"),
+            if (selectedBreed != 'Selecione uma raça')
+              ElevatedButton(
+                onPressed: () {
+                  _showImageDialog(context, breedImages[selectedBreed] ?? '');
+                },
+                child: Text("Ver Animal Selecionado"),
+              ),
+            SizedBox(height: 16),
+            _buildPetDescriptionInput(),
           ],
         ),
       ),
+    );
+  }
+
+  Widget _buildPetDescriptionInput() {
+    return TextFormField(
+      controller: descriptionController,
+      decoration: InputDecoration(
+        labelText: 'Descrição do Pet',
+        border: OutlineInputBorder(),
+      ),
+      maxLines: 3,
     );
   }
 
@@ -58,6 +96,7 @@ class _PetListScreenState extends State<PetListScreen> {
           onChanged: (value) {
             setState(() {
               selectedBreed = value!;
+              descriptionController.text = value!;
             });
           },
           items: breedImages.keys.map((String value) {
@@ -84,6 +123,7 @@ class _PetListScreenState extends State<PetListScreen> {
               onChanged: (value) {
                 setState(() {
                   selectedRadio = value as int;
+                  _updateDescriptionText();
                 });
               },
             ),
@@ -98,6 +138,7 @@ class _PetListScreenState extends State<PetListScreen> {
               onChanged: (value) {
                 setState(() {
                   selectedRadio = value as int;
+                  _updateDescriptionText();
                 });
               },
             ),
@@ -112,6 +153,7 @@ class _PetListScreenState extends State<PetListScreen> {
               onChanged: (value) {
                 setState(() {
                   selectedRadio = value as int;
+                  _updateDescriptionText();
                 });
               },
             ),
@@ -120,6 +162,20 @@ class _PetListScreenState extends State<PetListScreen> {
         ),
       ],
     );
+  }
+
+  void _updateDescriptionText() {
+    switch (selectedRadio) {
+      case 1:
+        descriptionController.text = "Pequeno porte";
+        break;
+      case 2:
+        descriptionController.text = "Médio porte";
+        break;
+      case 3:
+        descriptionController.text = "Grande porte";
+        break;
+    }
   }
 
   void _showImageDialog(BuildContext context, String imagePath) {
