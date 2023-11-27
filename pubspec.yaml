@@ -17,6 +17,7 @@ dependencies:
   cupertino_icons: ^1.0.6
   http: ^0.13.3  # Use a version of http that supports null safety
   carousel_slider: ^4.2.1
+  sqflite_common_ffi: ^2.3.0+4
   
 dev_dependencies:
   flutter_test:
