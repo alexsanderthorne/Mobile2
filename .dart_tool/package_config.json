@@ -50,6 +50,12 @@
       "languageVersion": "2.12"
     },
     {
+      "name": "ffi",
+      "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/ffi-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "flutter",
       "rootUri": "file:///C:/Users/Alexsander%20Araujo/Documents/Alexsander/flutter/packages/flutter",
       "packageUri": "lib/",
@@ -72,6 +78,12 @@
       "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/http_parser-4.0.2",
       "packageUri": "lib/",
       "languageVersion": "2.12"
+    },
+    {
+      "name": "js",
+      "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/js-0.6.7",
+      "packageUri": "lib/",
+      "languageVersion": "2.19"
     },
     {
       "name": "matcher",
@@ -110,6 +122,24 @@
       "languageVersion": "2.18"
     },
     {
+      "name": "sqflite_common",
+      "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite_common-2.5.0+2",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "sqflite_common_ffi",
+      "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/sqflite_common_ffi-2.3.0+4",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
+      "name": "sqlite3",
+      "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/sqlite3-2.1.0",
+      "packageUri": "lib/",
+      "languageVersion": "3.0"
+    },
+    {
       "name": "stack_trace",
       "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/stack_trace-1.11.1",
       "packageUri": "lib/",
@@ -124,6 +154,12 @@
     {
       "name": "string_scanner",
       "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/string_scanner-1.2.0",
+      "packageUri": "lib/",
+      "languageVersion": "2.18"
+    },
+    {
+      "name": "synchronized",
+      "rootUri": "file:///C:/Users/Alexsander%20Araujo/AppData/Local/Pub/Cache/hosted/pub.dev/synchronized-3.1.0",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -164,7 +200,7 @@
       "languageVersion": "2.12"
     }
   ],
-  "generated": "2023-11-26T21:26:09.291380Z",
+  "generated": "2023-11-27T02:06:05.285833Z",
   "generator": "pub",
   "generatorVersion": "3.2.0"
 }

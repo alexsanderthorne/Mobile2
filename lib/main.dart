@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_pets/AddPetScreen.dart';
 import 'package:my_pets/Menu.dart';
 import 'package:my_pets/PetListScreen.dart';
 import 'package:my_pets/pet.dart';
+
 
 void main() {
   runApp(MyApp());
@@ -66,14 +68,14 @@ class _BuildListViewState extends State<BuildListView> {
                 );
               },
             ),
-             ListTile(
+            ListTile(
               trailing: Icon(Icons.add_business_rounded),
               leading: Icon(Icons.flag),
               title: Text("Adicionar Animais"),
               onTap: () {
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => PetListScreen(),
+                    builder: (context) => AddPetScreen(),
                   ),
                 );
               },

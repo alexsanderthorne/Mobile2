@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:my_pets/DatabaseHelper.dart';
 import 'package:my_pets/Menu.dart';
-import 'package:my_pets/pet.dart';
+import 'package:my_pets/PetModel.dart';
 
 class PetListScreen extends StatefulWidget {
+
+  final DatabaseHelper dbHelper = DatabaseHelper();
+
   @override
   _PetListScreenState createState() => _PetListScreenState();
 }
@@ -204,4 +208,31 @@ class _PetListScreenState extends State<PetListScreen> {
       },
     );
   }
+
+   @override
+  void initState() {
+    super.initState();
+    _initializeDatabase();
+  }
+
+  Future<void> _initializeDatabase() async {
+    await widget.dbHelper.initializeDatabase();
+  }
+
+  Future<void> _addPetToDatabase() async {
+    PetModel newPet = PetModel(
+      name: 'Nome do Pet',
+      species: 'Espécie do Pet',
+      price: 100, // Substitua pelo preço desejado
+      picture: 'assets/images/placeholder.png', // Substitua pelo caminho da imagem desejada
+      foods: ['Ração A', 'Ração B'], // Substitua pelos alimentos desejados
+    );
+
+    await widget.dbHelper.insertPet(newPet);
+  }
+
+  // Future<void> _loadPetsFromDatabase() async {
+  //   List<PetModel> pets = await widget.dbHelper.getPets();
+  //   // Faça algo com a lista de pets carregados do banco de dados
+  // }
 }
